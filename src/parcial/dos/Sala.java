@@ -1,4 +1,6 @@
 package parcial.dos;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
@@ -13,8 +15,18 @@ public class Sala {
     private List<Butaca> butacas;
 
     public Sala(String codigo, String nombre, int filas, int butacasPorFila) {
-        // Constructor a resolver...
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.filas = filas;
+        this.butacasPorFila = butacasPorFila;
+        this.butacas = new ArrayList<>(); 
+        
+        generarButacas();
     }
+    private void generarButacas(){
+        for (int i = 0; i < filas; i++){
+            String fila = String.
+        }
 
     public String getCodigo() {
         // Método a resolver...

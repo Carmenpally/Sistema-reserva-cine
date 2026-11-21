@@ -12,45 +12,49 @@ public class Pelicula {
     private boolean activa;
 
     public Pelicula(String codigo, String titulo, int duracionMinutos) {
-        // Constructor a resolver...
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.duracionMinutos = duracionMinutos;
+        this.activa = true; 
     }
 
     public String getCodigo() {
-        // Método a resolver...
-        return "";
+        return codigo;
     }
 
     public String getTitulo() {
-        // Método a resolver...
-        return "";
+        return titulo;
     }
 
     public int getDuracionMinutos() {
-        // Método a resolver...
-        return 0;
+        return duracionMinutos;
     }
 
     public boolean isActiva() {
-        // Método a resolver...
-        return false;
+        return activa;
     }
 
     public void modificar(String titulo, int duracionMinutos) {
-        // Método a resolver...
+        this.titulo = titulo;
+        this.duracionMinutos = duracionMinutos;
     }
 
     public void desactivar() {
-        // Método a resolver...
+        this.activa = false;
     }
-
+    @Override
     public boolean equals(Object obj) {
-        // Método a resolver...
-        return false;
+        if (this == obj){
+        return true;
+        }
+        if (!(obj instanceof Pelicula)){
+            return false;
+        }
+        
+        Pelicula otra = (Pelicula) obj;
+        
+        boolean mismoCodigo = codigo.equals(otra.codigo);
+        
+        return mismoCodigo;
     }
-
-    public int hashCode() {
-        // Método a resolver...
-        return 0;
-    }
-
 }
