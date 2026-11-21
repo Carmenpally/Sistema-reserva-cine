@@ -1,5 +1,8 @@
 package parcial.dos;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
 * @see https://github.com/CharlyCimino/uxf-to-java
@@ -19,18 +22,15 @@ public class Reserva {
     }
 
     public String getCodigo() {
-        // Método a resolver...
-        return "";
+        return codigo;
     }
-
+    
     public Cliente getCliente() {
-        // Método a resolver...
-        return null;
+        return this.cliente;
     }
 
     public Funcion getFuncion() {
-        // Método a resolver...
-        return null;
+        return ;
     }
 
     public List<Entrada> getEntradas() {

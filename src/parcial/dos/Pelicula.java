@@ -21,8 +21,7 @@ public class Pelicula {
     }
 
     public String getTitulo() {
-        // Método a resolver...
-        return "";
+        return this.titulo;
     }
 
     public int getDuracionMinutos() {

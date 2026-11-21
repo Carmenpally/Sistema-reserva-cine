@@ -1,9 +1,7 @@
 package parcial.dos;
 
-/**
-* Código generado por la app UXFtoJava by Charly Cimino
-* @see https://github.com/CharlyCimino/uxf-to-java
-*/
+import java.time.LocalDateTime;
+
 public class Funcion {
 
     private String codigo;
@@ -11,40 +9,31 @@ public class Funcion {
     private Sala sala;
     private LocalDateTime fechaHora;
     private double precioBase;
+    private String horaFinal;
 
     public Funcion(String codigo, Pelicula pelicula, Sala sala, LocalDateTime fechaHora, double precioBase) {
         // Constructor a resolver...
     }
 
     public String getCodigo() {
-        // Método a resolver...
-        return "";
+        return this.codigo;
     }
 
     public Pelicula getPelicula() {
-        // Método a resolver...
-        return null;
+        return this.pelicula;
     }
 
     public Sala getSala() {
-        // Método a resolver...
-        return null;
+        return this.sala;
     }
 
-    public LocalDateTime getFechaHora() {
-        // Método a resolver...
-        return null;
+    public int getFechaHora() {
+        return this.fechaHora.getDayOfMonth();
     }
 
     public double getPrecioBase() {
-        // Método a resolver...
-        return 0;
-    }
-
-    public LocalDateTime getHoraFinalizacion() {
-        // Método a resolver...
-        return null;
-    }
+        return this.precioBase;
+    }    
 
     public boolean comenzo() {
         // Método a resolver...
@@ -66,4 +55,13 @@ public class Funcion {
         return 0;
     }
 
+    @Override
+    public String toString(){
+        return "Funcion: " +
+                "\nCodigo: " + this.codigo +
+                "\nPelicula: " + this.pelicula.getTitulo() +
+                "\nSala: " + this.sala.getNombre() +
+                "\nHorario: " + this.fechaHora +
+                "\nPrecio " + this.precioBase;
+    }
 }

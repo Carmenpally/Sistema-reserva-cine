@@ -32,5 +32,14 @@ public class Cliente {
         // Método a resolver...
         return 0;
     }
+    
+    @Override
+    public String toString(){
+        return "Cliente: \n" +
+                "Nombre: " + this.nombre + "\n" + 
+                "Identificacion: " + this.identificacion;
+
+    }
+    
 
 }

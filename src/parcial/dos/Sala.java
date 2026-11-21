@@ -1,5 +1,7 @@
 package parcial.dos;
 
+import java.util.List;
+
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
 * @see https://github.com/CharlyCimino/uxf-to-java
@@ -63,7 +65,15 @@ public class Sala {
 
     public int hashCode() {
         // Método a resolver...
-        return 0;
+        return 0;}
+        
+    @Override
+    public String toString(){
+        return "Sala: " +
+                "\nCodigo: " + this.codigo +
+                "\nnombre: " + this.nombre +
+                "\nCantidad de filas: " + this.filas +
+                "\nCantidad de butacas por fila: " + this.butacasPorFila;
     }
 
 }

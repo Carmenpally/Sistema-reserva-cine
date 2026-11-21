@@ -6,7 +6,7 @@ package parcial.dos;
 */
 public class Butaca {
 
-    private String fila;
+    private String letraFila;
     private int numero;
 
     public Butaca(String fila, int numero) {
