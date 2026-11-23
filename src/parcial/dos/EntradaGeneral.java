@@ -1,19 +1,23 @@
 package parcial.dos;
 
 /**
-* Código generado por la app UXFtoJava by Charly Cimino
-* @see https://github.com/CharlyCimino/uxf-to-java
-*/
+ * Entrada general: precio base 
+ */
 public class EntradaGeneral extends Entrada {
 
+    private static final long serialVersionUID = 1L;
+
+    public EntradaGeneral(Butaca butaca) {
+        super(butaca);
+    }
+
+    @Override
     public double calcularPrecio(double precioBase) {
-        // Método a resolver...
-        return 0;
+        return precioBase;
     }
 
+    @Override
     public String getNombreTipo() {
-        // Método a resolver...
-        return "";
+        return "General";
     }
-
 }

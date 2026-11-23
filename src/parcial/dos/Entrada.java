@@ -1,34 +1,44 @@
 package parcial.dos;
 
-/**
-* Código generado por la app UXFtoJava by Charly Cimino
-* @see https://github.com/CharlyCimino/uxf-to-java
-*/
-public abstract class Entrada {
+import java.io.Serializable;
 
-    private Butaca butaca;
+/**
+ * Entrada de una butaca dentro de una reserva.
+ * Es abstracta: no existe una entrada "sin tipo". Cada tipo (general, estudiante)
+ * define cómo calcula su precio, y el resto del sistema solo llama a
+ * calcularPrecio() sin preguntar de qué tipo es (polimorfismo).
+ */
+public abstract class Entrada implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private final Butaca butaca;
     private double precioConfirmado;
 
     public Entrada(Butaca butaca) {
-        // Constructor a resolver...
+        // faltan las validaciones y excepcioes
+        this.butaca = butaca;
     }
 
     public Butaca getButaca() {
-        // Método a resolver...
-        return null;
+        return butaca;
     }
 
     public double getPrecioConfirmado() {
-        // Método a resolver...
-        return 0;
+        return precioConfirmado;
     }
 
+    
+    //  no cambia aunque después cambie el precio de la función 
+    // "El importe confirmado y los precios de las entradas deberán conservarse aunque posteriormente
+    //cambie el precio de la función"
     public void confirmarPrecio(double precioBase) {
-        // Método a resolver...
+        this.precioConfirmado = calcularPrecio(precioBase);
     }
 
+    
     public abstract double calcularPrecio(double precioBase);
 
+    
     public abstract String getNombreTipo();
-
 }

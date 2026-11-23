@@ -1,21 +1,27 @@
 package parcial.dos;
 
 /**
-* Código generado por la app UXFtoJava by Charly Cimino
-* @see https://github.com/CharlyCimino/uxf-to-java
-*/
+ * Entrada de estudiante: precio base menos descuento 20%.
+ * 
+ */
 public class EntradaEstudiante extends Entrada {
 
-    private final double DESCUENTO = 0.20;
+    private static final long serialVersionUID = 1L;
 
+    
+    private static final double DESCUENTO = 0.20;
+
+    public EntradaEstudiante(Butaca butaca) {
+        super(butaca);
+    }
+
+    @Override
     public double calcularPrecio(double precioBase) {
-        // Método a resolver...
-        return 0;
+        return precioBase - (precioBase * DESCUENTO);
     }
 
+    @Override
     public String getNombreTipo() {
-        // Método a resolver...
-        return "";
+        return "Estudiante";
     }
-
 }
