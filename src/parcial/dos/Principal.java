@@ -1,14 +1,23 @@
 package parcial.dos;
 
-/**
-* Código generado por la app UXFtoJava by Charly Cimino
-* @see https://github.com/CharlyCimino/uxf-to-java
-*/
 public class Principal {
 
     public static void main(String[] args) {
-        // Método a resolver...
-        System.out.println("");
+        EstadoCine estado = PersistenciaCine.cargarOInicializar(PersistenciaCine.getRutaPorDefecto());
+
+        PeliculaService peliculaService = new PeliculaService(estado);
+        SalaService salaService = new SalaService(estado);
+        FuncionService funcionService = new FuncionService(estado);
+        ReservaService reservaService = new ReservaService(estado);
+        
+        
+       if (PersistenciaCine.guardar(PersistenciaCine.getRutaPorDefecto(), estado)) {
+            System.out.println("Estado guardado correctamente.");
+       }
+       
+       if (ExportadorReservaCsv.exportar(ExportadorReservaCsv.getRutaCsvPorDefecto(), estado)) {
+            System.out.println("Reservas exportadas a CSV correctamente.");
+        }
     }
 
 }

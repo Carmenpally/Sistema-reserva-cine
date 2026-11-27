@@ -1,36 +1,56 @@
 package parcial.dos;
 
+import excepciones.ReglaNegocioException;
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
-* Código generado por la app UXFtoJava by Charly Cimino
-* @see https://github.com/CharlyCimino/uxf-to-java
-*/
-public class Butaca {
+ * Ubicación física de una sala, identificada por fila y número
+ * Es inmutable: una vez creada no cambia. Que esté libre u ocupada NO se guarda
+ * aquí, porque eso depende de la función (lo resuelven las reservas).
+ */
+public class Butaca implements Serializable {
 
-    private String letraFila;
-    private int numero;
+    private static final long serialVersionUID = 1L;
 
-    public Butaca(String fila, int numero) {
-        // Constructor a resolver...
+
+    private final String fila;
+    private final int numero;
+
+    public Butaca(String fila, int numero) throws ReglaNegocioException {
+        if (fila == null || fila.trim().isEmpty()) {
+            throw new ReglaNegocioException("La fila de la butaca es obligatoria.");
+        }
+        if (numero <= 0) {
+            throw new ReglaNegocioException("El número de la butaca debe ser mayor que cero.");
+        }
+        this.fila = fila.trim();
+        this.numero = numero;
     }
 
     public String getFila() {
-        // Método a resolver...
-        return "";
+        return fila;
     }
 
     public int getNumero() {
-        // Método a resolver...
-        return 0;
+        return numero;
     }
-
+    
+    @Override
     public boolean equals(Object obj) {
-        // Método a resolver...
-        return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Butaca otra = (Butaca) obj;
+        return numero == otra.numero && fila.equals(otra.fila);
     }
 
+    
+    @Override
     public int hashCode() {
-        // Método a resolver...
-        return 0;
+        return Objects.hash(fila, numero);
     }
-
 }
