@@ -1,8 +1,9 @@
-package parcial.dos;
+package modelo;
 
+import repositorios.Identificable;
 import excepciones.ReglaNegocioException;
 import java.io.Serializable;
-
+import java.util.Locale;
 
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
@@ -27,7 +28,8 @@ public class Cliente implements Serializable, Identificable{
             "El nombre del cliente es obligatorio."
             );
         }
-        this.identificacion = identificacion.trim();
+        this.identificacion = identificacion.trim()
+        .toUpperCase(Locale.ROOT);
         this.nombre = nombre.trim();
     }
 

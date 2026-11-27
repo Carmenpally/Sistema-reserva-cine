@@ -1,4 +1,4 @@
-package parcial.dos;
+package modelo;
 import excepciones.ReglaNegocioException;
 
 /**

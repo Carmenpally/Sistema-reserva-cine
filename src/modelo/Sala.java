@@ -1,8 +1,10 @@
-package parcial.dos;
+package modelo;
+import repositorios.Identificable;
 import excepciones.ReglaNegocioException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
@@ -27,11 +29,15 @@ public class Sala implements Serializable, Identificable {
         if (filas <= 0){
             throw new ReglaNegocioException("La cantidad de filas debe ser mayor que cero.");
         }
+        if (filas > 26) {
+            throw new ReglaNegocioException(
+            "La sala no puede tener más de 26 filas.");
+        }
         if (butacasPorFila <=0){
             throw new ReglaNegocioException("La cantidad de butacas por fila debe ser mayor que cero");
         }
         
-        this.codigo = codigo.trim();
+        this.codigo = codigo.trim().toUpperCase(Locale.ROOT);
         this.nombre = nombre.trim();
         this.filas = filas;
         this.butacasPorFila = butacasPorFila;
@@ -106,6 +112,11 @@ public class Sala implements Serializable, Identificable {
         
         return codigo.equals(otra.codigo);
     }
+    @Override
+    public String toString() {
+        return codigo + " - " + nombre;
+    }
+
     @Override
     public int hashCode(){
         return codigo.hashCode();

@@ -1,7 +1,9 @@
-package parcial.dos;
+package modelo;
+import repositorios.Identificable;
 import excepciones.ReglaNegocioException;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Locale;
 
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
@@ -32,10 +34,14 @@ public class Pelicula implements Serializable, Identificable {
             );
         }
         
-        this.codigo = codigo.trim();
+        this.codigo = codigo.trim().toUpperCase(Locale.ROOT);
         this.titulo = titulo.trim();
         this.duracionMinutos = duracionMinutos;
         this.activa = true; 
+    }
+    @Override
+    public String toString() {
+        return codigo + " - " + titulo;
     }
 
     @Override

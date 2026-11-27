@@ -1,5 +1,7 @@
-package parcial.dos;
+package modelo;
 
+import java.util.Locale;
+import repositorios.Identificable;
 import excepciones.ReglaNegocioException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -49,7 +51,7 @@ public class Funcion implements Serializable, Identificable {
             "El precio debe ser válido y mayor que cero."
             );
         }
-        this.codigo = codigo.trim();
+        this.codigo = codigo.trim().toUpperCase(Locale.ROOT);
         this.pelicula = pelicula;
         this.sala = sala;
         this.fechaHoraInicio = fechaHoraInicio;

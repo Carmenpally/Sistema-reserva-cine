@@ -1,5 +1,7 @@
-package parcial.dos;
+package modelo;
 
+import java.util.Locale;
+import repositorios.Identificable;
 import excepciones.ReglaNegocioException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -54,7 +56,7 @@ public class Reserva implements Serializable, Identificable {
         
         validarEntradas(funcion, entradas);
         
-        this.codigo = codigo.trim();
+        this.codigo = codigo.trim().toUpperCase(Locale.ROOT);
         this.cliente = cliente;
         this.funcion = funcion;
         this.entradas = new ArrayList<>(entradas);
