@@ -13,6 +13,7 @@ public class Butaca implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
     private final String fila;
     private final int numero;
 

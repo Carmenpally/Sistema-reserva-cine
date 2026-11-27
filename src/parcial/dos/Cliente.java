@@ -62,5 +62,14 @@ public class Cliente implements Serializable, Identificable{
     public int hashCode() {
         return identificacion.hashCode();
     }
+    
+    @Override
+    public String toString(){
+        return "Cliente: \n" +
+                "Nombre: " + this.nombre + "\n" + 
+                "Identificacion: " + this.identificacion;
+
+    }
+    
 
 }

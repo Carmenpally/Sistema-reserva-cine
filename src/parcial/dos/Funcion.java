@@ -17,6 +17,7 @@ public class Funcion implements Serializable, Identificable {
     private Sala sala;
     private LocalDateTime fechaHoraInicio;
     private double precioBase;
+    private String horaFinal;
 
     public Funcion(String codigo, Pelicula pelicula, Sala sala, LocalDateTime fechaHoraInicio, double precioBase) throws ReglaNegocioException {
         if (codigo == null || codigo.trim().isEmpty()){
@@ -58,6 +59,7 @@ public class Funcion implements Serializable, Identificable {
 
     @Override
     public String getCodigo() {
+
         return codigo;
     }
 
@@ -91,6 +93,7 @@ public class Funcion implements Serializable, Identificable {
         boolean comenzo = !fechaHoraInicio.isAfter(ahora);
         return comenzo;
     }
+    
     public void modificarPrecio(double precioBase) throws ReglaNegocioException {
         if (precioBase <= 0 || !Double.isFinite(precioBase)){
             throw new ReglaNegocioException(
@@ -133,4 +136,13 @@ public class Funcion implements Serializable, Identificable {
         return codigo.hashCode();
     }
 
+    @Override
+    public String toString(){
+        return "Funcion: " +
+                "\nCodigo: " + this.codigo +
+                "\nPelicula: " + this.pelicula.getTitulo() +
+                "\nSala: " + this.sala.getNombre() +
+                "\nHorario: " + this.fechaHoraInicio +
+                "\nPrecio " + this.precioBase;
+    }
 }
