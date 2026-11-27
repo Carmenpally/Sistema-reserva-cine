@@ -1,5 +1,7 @@
 package parcial.dos;
 
+import excepciones.ReglaNegocioException;
+import servicios.DatosDemo;
 import persistencia.PersistenciaCine;
 import modelo.EstadoCine;
 import interfaz.VentanaPrincipal;
@@ -56,6 +58,21 @@ public class AplicacionCine extends Application {
         salaService = new SalaService(estado);
         funcionService = new FuncionService(estado);
         reservaService = new ReservaService(estado);
+        DatosDemo datosDemo = new DatosDemo(estado, peliculaService,
+                salaService, funcionService, reservaService);
+
+        try {
+            if (datosDemo.cargarSiEstaVacio()) {
+                persistencia.guardar(estado);
+            }
+        } catch (ReglaNegocioException | IOException e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Datos de demostración");
+            alerta.setHeaderText(
+                    "No se pudieron cargar los datos de demostración.");
+            alerta.setContentText(e.getMessage());
+            alerta.showAndWait();
+        }
 
         VentanaPrincipal ventana = new VentanaPrincipal(
         estado,
