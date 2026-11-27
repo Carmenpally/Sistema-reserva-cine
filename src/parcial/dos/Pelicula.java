@@ -7,7 +7,7 @@ import java.util.Objects;
 * Código generado por la app UXFtoJava by Charly Cimino
 * @see https://github.com/CharlyCimino/uxf-to-java
 */
-public class Pelicula implements Serializable {
+public class Pelicula implements Serializable, Identificable {
 
     private static final long serialVersionUID = 1L;
     private String codigo;
@@ -38,6 +38,7 @@ public class Pelicula implements Serializable {
         this.activa = true; 
     }
 
+    @Override
     public String getCodigo() {
         return codigo;
     }

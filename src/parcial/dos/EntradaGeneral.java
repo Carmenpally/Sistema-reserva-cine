@@ -1,19 +1,26 @@
 package parcial.dos;
 
+import excepciones.ReglaNegocioException;
+
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
 * @see https://github.com/CharlyCimino/uxf-to-java
 */
 public class EntradaGeneral extends Entrada {
-
-    public double calcularPrecio(double precioBase) {
-        // Método a resolver...
-        return 0;
+    
+    private static final long serialVersionUID = 1L;
+    
+    public EntradaGeneral(Butaca butaca) throws ReglaNegocioException{
+        super(butaca);
     }
-
-    public String getNombreTipo() {
-        // Método a resolver...
-        return "";
+    
+    @Override
+    public double calcularPrecio(double precioBase){
+        return precioBase;
     }
-
+    
+    @Override
+    public String getNombreTipo(){
+        return "General";
+    }
 }

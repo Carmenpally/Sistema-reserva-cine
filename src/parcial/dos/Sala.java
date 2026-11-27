@@ -8,7 +8,7 @@ import java.util.List;
 * Código generado por la app UXFtoJava by Charly Cimino
 * @see https://github.com/CharlyCimino/uxf-to-java
 */
-public class Sala implements Serializable {
+public class Sala implements Serializable, Identificable {
     
     private static final long serialVersionUID = 1L;
     private String codigo;
@@ -35,7 +35,8 @@ public class Sala implements Serializable {
         this.nombre = nombre.trim();
         this.filas = filas;
         this.butacasPorFila = butacasPorFila;
-        this.butacas = new ArrayList<>(); 
+        int capacidad = filas * butacasPorFila;
+        this.butacas = new ArrayList<>(capacidad); 
         
         generarButacas();
     }
@@ -52,6 +53,7 @@ public class Sala implements Serializable {
         }
     }
 
+    @Override
     public String getCodigo() {
         return codigo;
     }

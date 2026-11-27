@@ -1,44 +1,48 @@
 package parcial.dos;
 
+import java.io.Serializable;
+
+
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
 * @see https://github.com/CharlyCimino/uxf-to-java
 */
-public class EstadoCine {
+public class EstadoCine implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 
-    private List<Pelicula> peliculas;
-    private List<Sala> salas;
-    private List<Funcion> funciones;
-    private List<Cliente> clientes;
-    private List<Reserva> reservas;
-
+    private final Repositorio<Pelicula> peliculas;
+    private final Repositorio<Sala> salas;
+    private final Repositorio<Funcion> funciones;
+    private final Repositorio<Cliente> clientes;
+    private final Repositorio<Reserva> reservas;
+    
     public EstadoCine() {
-        // Constructor a resolver...
+        this.peliculas = new Repositorio<>();
+        this.salas = new Repositorio<>();
+        this.funciones = new Repositorio<>();
+        this.clientes = new Repositorio<>();
+        this.reservas = new Repositorio<>();
     }
 
-    public List<Pelicula> getPeliculas() {
-        // Método a resolver...
-        return null;
+    public Repositorio<Pelicula> getPeliculas() {
+        return peliculas;
     }
 
-    public List<Sala> getSalas() {
-        // Método a resolver...
-        return null;
+    public Repositorio<Sala> getSalas() {
+        return salas;
     }
 
-    public List<Funcion> getFunciones() {
-        // Método a resolver...
-        return null;
+    public Repositorio<Funcion> getFunciones() {
+        return funciones;
     }
 
-    public List<Cliente> getClientes() {
-        // Método a resolver...
-        return null;
+    public Repositorio<Cliente> getClientes() {
+        return clientes;
     }
 
-    public List<Reserva> getReservas() {
-        // Método a resolver...
-        return null;
+    public Repositorio<Reserva> getReservas() {
+        return reservas;
     }
 
 }
