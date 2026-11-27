@@ -1,69 +1,113 @@
 package parcial.dos;
+import excepciones.ReglaNegocioException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * Código generado por la app UXFtoJava by Charly Cimino
 * @see https://github.com/CharlyCimino/uxf-to-java
 */
-public class Sala {
-
+public class Sala implements Serializable, Identificable {
+    
+    private static final long serialVersionUID = 1L;
     private String codigo;
     private String nombre;
     private int filas;
     private int butacasPorFila;
     private List<Butaca> butacas;
 
-    public Sala(String codigo, String nombre, int filas, int butacasPorFila) {
-        // Constructor a resolver...
+    public Sala (String codigo, String nombre, int filas, int butacasPorFila)throws ReglaNegocioException {
+        if (codigo == null|| codigo.trim().isEmpty()){
+            throw new ReglaNegocioException("El código de la sala es obligatorio.");
+        }
+        if (nombre == null || nombre.trim().isEmpty()){
+            throw new ReglaNegocioException("El nombre de la sala es obligatorio.");
+        }
+        if (filas <= 0){
+            throw new ReglaNegocioException("La cantidad de filas debe ser mayor que cero.");
+        }
+        if (butacasPorFila <=0){
+            throw new ReglaNegocioException("La cantidad de butacas por fila debe ser mayor que cero");
+        }
+        
+        this.codigo = codigo.trim();
+        this.nombre = nombre.trim();
+        this.filas = filas;
+        this.butacasPorFila = butacasPorFila;
+        int capacidad = filas * butacasPorFila;
+        this.butacas = new ArrayList<>(capacidad); 
+        
+        generarButacas();
+    }
+    private void generarButacas()throws ReglaNegocioException {
+        for (int i = 0; i < filas; i++){
+            char letraFila = (char) ('A' + i );
+            String fila = "" + letraFila;
+            
+            for (int numero = 1; numero <= butacasPorFila; numero++){
+                Butaca butaca = new Butaca(fila, numero);
+                
+                butacas.add(butaca);
+            }
+        }
     }
 
+    @Override
     public String getCodigo() {
-        // Método a resolver...
-        return "";
+        return codigo;
     }
 
     public String getNombre() {
-        // Método a resolver...
-        return "";
+        return nombre;
     }
 
     public int getFilas() {
-        // Método a resolver...
-        return 0;
+        return filas;
     }
 
     public int getButacasPorFila() {
-        // Método a resolver...
-        return 0;
+        return butacasPorFila;
     }
 
     public int getCapacidad() {
-        // Método a resolver...
-        return 0;
+        return filas*butacasPorFila;
     }
 
     public List<Butaca> getButacas() {
-        // Método a resolver...
-        return null;
+        return butacas;
     }
 
     public Butaca buscarButaca(String fila, int numero) {
-        // Método a resolver...
+        for (Butaca butaca : butacas){
+            
+            boolean mismaFila = butaca.getFila().equals(fila);
+            boolean mismoNumero = butaca.getNumero() == numero;
+            if (mismaFila && mismoNumero){
+                return butaca;
+            }
+        }
         return null;
     }
 
     public boolean contieneButaca(Butaca butaca) {
-        // Método a resolver...
-        return false;
+        return butacas.contains(butaca);
     }
-
+    
+    @Override
     public boolean equals(Object obj) {
-        // Método a resolver...
-        return false;
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()){
+            return false;
+        }
+        Sala otra = (Sala) obj;
+        
+        return codigo.equals(otra.codigo);
     }
-
-    public int hashCode() {
-        // Método a resolver...
-        return 0;
+    @Override
+    public int hashCode(){
+        return codigo.hashCode();
     }
-
 }
