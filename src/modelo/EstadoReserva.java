@@ -1,4 +1,4 @@
-package parcial.dos;
+package modelo;
 
 /**
 * Código generado por la app UXFtoJava by Charly Cimino

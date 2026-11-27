@@ -1,5 +1,6 @@
-package parcial.dos;
+package modelo;
 
+import repositorios.Repositorio;
 import java.io.Serializable;
 
 

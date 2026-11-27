@@ -1,0 +1,2 @@
+Codigo;Cliente;Identificacion;Pelicula;Funcion;Sala;FechaHoraFuncion;Butacas;TiposEntrada;ImporteTotal;Estado
+"R01";"Juan Perez";"35456789";"Matrix";"F01";"S01";2026-11-28T13:48:07.444594500;"A1,A2";"General,Estudiante";3600.0;CANCELADA
